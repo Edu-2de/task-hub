@@ -1,15 +1,15 @@
-// src/components/TaskForm.jsx
 import { useState } from 'react';
 import '../styles/TaskForm.css';
+import { useTasks } from '../context/TaskContext';
 
-const TaskForm = ({ onAddTask }) => {
+const TaskForm = () => {
   const [task, setTask] = useState('');
+  const { addTask } = useTasks();
 
   const handleSubmit = (e) => {
     e.preventDefault();
     if (task.trim() === '') return;
-
-    onAddTask(task.trim());
+    addTask(task.trim());
     setTask('');
   };
 

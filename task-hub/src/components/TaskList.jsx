@@ -1,8 +1,10 @@
-// src/components/TaskList.jsx
 import TaskItem from './TaskItem';
 import '../styles/TaskList.css';
+import { useTasks } from '../context/TaskContext';
 
-const TaskList = ({ tasks, onToggleComplete, onDelete }) => {
+const TaskList = () => {
+  const { tasks, toggleTaskComplete, deleteTask } = useTasks();
+
   return (
     <div className="task-list">
       {tasks.length === 0 ? (
@@ -12,8 +14,8 @@ const TaskList = ({ tasks, onToggleComplete, onDelete }) => {
           <TaskItem
             key={task.id}
             task={task}
-            onToggleComplete={onToggleComplete}
-            onDelete={onDelete}
+            onToggleComplete={toggleTaskComplete}
+            onDelete={deleteTask}
           />
         ))
       )}
