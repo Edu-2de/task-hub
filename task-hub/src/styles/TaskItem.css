@@ -1,0 +1,29 @@
+/* src/styles/TaskItem.css */
+.task-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #f1f5f9;
+  padding: 0.75rem 1rem;
+  border-radius: 6px;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.task-item:hover {
+  background-color: #e2e8f0;
+}
+
+.task-item.completed span {
+  text-decoration: line-through;
+  color: #94a3b8;
+}
+
+.delete-button {
+  background: none;
+  border: none;
+  color: #ef4444;
+  font-size: 1.2rem;
+  cursor: pointer;
+}
