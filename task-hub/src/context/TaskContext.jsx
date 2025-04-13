@@ -2,6 +2,7 @@ import { createContext, useContext, useEffect, useState } from 'react';
 
 const TaskContext = createContext();
 
+// eslint-disable-next-line react-refresh/only-export-components
 export const useTasks = () => useContext(TaskContext);
 
 export const TaskProvider = ({ children }) => {
@@ -10,9 +11,13 @@ export const TaskProvider = ({ children }) => {
     return storedTasks ? JSON.parse(storedTasks) : [];
   });
 
+
+
   useEffect(() => {
     localStorage.setItem('tasks', JSON.stringify(tasks));
   }, [tasks]);
+
+
 
   const addTask = (text) => {
     const newTask = {
@@ -23,6 +28,8 @@ export const TaskProvider = ({ children }) => {
     setTasks((prev) => [...prev, newTask]);
   };
 
+
+
   const toggleTaskComplete = (id) => {
     setTasks((prev) =>
       prev.map((task) =>
@@ -31,9 +38,13 @@ export const TaskProvider = ({ children }) => {
     );
   };
 
+
+
   const deleteTask = (id) => {
     setTasks((prev) => prev.filter((task) => task.id !== id));
   };
+
+
 
   return (
     <TaskContext.Provider value={{ tasks, addTask, toggleTaskComplete, deleteTask }}>
