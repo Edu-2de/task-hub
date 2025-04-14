@@ -4,11 +4,19 @@ import TaskForm from './components/TaskForm';
 import TaskList from './components/TaskList';
 import { TaskProvider } from './context/TaskContext';
 import LoginForm from './components/LoginForm';
+import Sidebar from './components/Sidebar';
+import CalendarPage from './components/CalendarPage';
 import { useState } from 'react';
 
 function App() {
   const [user, setUser] = useState(null);
   const [isRegistering, setIsRegistering] = useState(false);
+  const [page, setPage] = useState('tasks');
+  const [isSidebarOpen, setIsSidebarOpen] = useState(true);
+
+  const toggleSidebar = () => {
+    setIsSidebarOpen((prev) => !prev);
+  };
 
   if (!user) {
     return (
@@ -37,10 +45,29 @@ function App() {
 
   return (
     <TaskProvider user={user}>
-      <div>
-        <Header />
-        <TaskForm />
-        <TaskList />
+      <div className="app">
+        <Sidebar
+          setPage={setPage}
+          page={page}
+          isOpen={isSidebarOpen}
+          toggleSidebar={toggleSidebar}
+        />
+        <div
+          className="content"
+          style={{
+            marginLeft: isSidebarOpen ? '250px' : '0',
+            padding: '20px',
+            transition: 'margin-left 0.3s ease',
+          }}
+        >
+          {page === 'tasks' && (
+            <>
+              <TaskForm />
+              <TaskList />
+            </>
+          )}
+          {page === 'calendar' && <CalendarPage />}
+        </div>
       </div>
     </TaskProvider>
   );

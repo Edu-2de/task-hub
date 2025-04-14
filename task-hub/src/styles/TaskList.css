@@ -35,3 +35,7 @@
 .delete-button:hover {
   background-color: #e60000;
 }
+
+.no-tasks{
+  text-align: center;
+}

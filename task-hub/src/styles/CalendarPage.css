@@ -1,0 +1,30 @@
+.calendar-page {
+  margin-left: 220px;
+  padding: 20px;
+}
+
+.task-list {
+  margin-top: 20px;
+}
+
+.task-list ul {
+  list-style: none;
+  padding: 0;
+}
+
+.task-list li {
+  background-color: #f9f9f9;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  padding: 10px;
+  margin-bottom: 10px;
+}
+
+.dot {
+  height: 8px;
+  width: 8px;
+  background-color: #007bff;
+  border-radius: 50%;
+  display: inline-block;
+  margin-top: 5px;
+}

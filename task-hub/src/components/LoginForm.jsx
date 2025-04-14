@@ -8,25 +8,26 @@ const LoginForm = ({ onLogin, isRegistering }) => {
   const [password, setPassword] = useState('');
 
   const handleLogin = async (e) => {
-    e.preventDefault();
-    try {
-      const userCredential = await signInWithEmailAndPassword(auth, email, password);
-      onLogin(userCredential.user);
-    } catch (error) {
-      alert('Erro ao fazer login: ' + error.message);
-    }
-  };
-
-  const handleRegister = async (e) => {
-    e.preventDefault();
-    try {
-      const userCredential = await createUserWithEmailAndPassword(auth, email, password);
-      onLogin(userCredential.user);
-    } catch (error) {
-      alert('Erro ao registrar: ' + error.message);
-    }
-  };
-
+      e.preventDefault();
+      try {
+        const userCredential = await signInWithEmailAndPassword(auth, email, password);
+        console.log("Usuário logado:", userCredential.user);
+        onLogin(userCredential.user);
+      } catch (error) {
+        alert('Erro ao fazer login: ' + error.message);
+      }
+    };
+    
+    const handleRegister = async (e) => {
+      e.preventDefault();
+      try {
+        const userCredential = await createUserWithEmailAndPassword(auth, email, password);
+        console.log("Usuário registrado:", userCredential.user); 
+        onLogin(userCredential.user);
+      } catch (error) {
+        alert('Erro ao registrar: ' + error.message);
+      }
+    };
   return (
     <form
       onSubmit={isRegistering ? handleRegister : handleLogin}

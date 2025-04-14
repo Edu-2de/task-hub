@@ -2,10 +2,10 @@ import '../styles/TaskList.css';
 import { useTasks } from "../context/TaskContext";
 
 const TaskList = () => {
-  const { tasks } = useTasks();
+  const { tasks, deleteTask } = useTasks();
 
   if (tasks.length === 0) {
-    return <p className="no-tasks">Nenhuma tarefa encontrada.</p>;
+    return <p  className="no-tasks">Nenhuma tarefa encontrada.</p>;
   }
 
   return (
@@ -16,6 +16,9 @@ const TaskList = () => {
           <p>{task.description}</p>
           <p>Due Date: {task.dueDate}</p>
           <p>Client: {task.client}</p>
+          <button onClick={() => deleteTask(task.id)} className="delete-button">
+            Deletar
+          </button>
         </li>
       ))}
     </ul>

@@ -4,6 +4,7 @@ import { collection, addDoc, query, where, getDocs, deleteDoc, doc, updateDoc } 
 
 const TaskContext = createContext();
 
+// eslint-disable-next-line react-refresh/only-export-components
 export const useTasks = () => useContext(TaskContext);
 
 export const TaskProvider = ({ children, user }) => {
@@ -11,6 +12,7 @@ export const TaskProvider = ({ children, user }) => {
 
   useEffect(() => {
     if (user) {
+      console.log("Usuário no contexto:", user); // Verifique se o usuário está sendo passado
       const fetchTasks = async () => {
         try {
           const q = query(collection(db, "tasks"), where("userId", "==", user.uid));
@@ -19,6 +21,7 @@ export const TaskProvider = ({ children, user }) => {
             id: doc.id,
             ...doc.data(),
           }));
+          console.log("Tarefas carregadas:", userTasks); // Verifique se as tarefas estão sendo carregadas
           setTasks(userTasks);
         } catch (error) {
           console.error("Erro ao carregar tarefas:", error);
@@ -56,10 +59,13 @@ export const TaskProvider = ({ children, user }) => {
   };
 
   const deleteTask = async (taskId) => {
-    await deleteDoc(doc(db, "tasks", taskId));
-    setTasks((prevTasks) => prevTasks.filter((task) => task.id !== taskId));
+    try {
+      await deleteDoc(doc(db, "tasks", taskId));
+      setTasks((prevTasks) => prevTasks.filter((task) => task.id !== taskId));
+    } catch (error) {
+      console.error("Erro ao deletar tarefa:", error);
+    }
   };
-
   return (
     <TaskContext.Provider value={{ tasks, addTask, toggleTaskComplete, deleteTask }}>
       {children}
