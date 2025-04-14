@@ -1,25 +1,24 @@
-import TaskItem from './TaskItem';
 import '../styles/TaskList.css';
-import { useTasks } from '../context/TaskContext';
+import { useTasks } from "../context/TaskContext";
 
 const TaskList = () => {
-  const { tasks, toggleTaskComplete, deleteTask } = useTasks();
+  const { tasks } = useTasks();
+
+  if (tasks.length === 0) {
+    return <p className="no-tasks">Nenhuma tarefa encontrada.</p>;
+  }
 
   return (
-    <div className="task-list">
-      {tasks.length === 0 ? (
-        <p className="no-tasks">No tasks added yet.</p>
-      ) : (
-        tasks.map((task) => (
-          <TaskItem
-            key={task.id}
-            task={task}
-            onToggleComplete={toggleTaskComplete}
-            onDelete={deleteTask}
-          />
-        ))
-      )}
-    </div>
+    <ul className="task-list">
+      {tasks.map((task) => (
+        <li key={task.id} className="task-item">
+          <h3>{task.title}</h3>
+          <p>{task.description}</p>
+          <p>Due Date: {task.dueDate}</p>
+          <p>Client: {task.client}</p>
+        </li>
+      ))}
+    </ul>
   );
 };
 

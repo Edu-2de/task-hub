@@ -6,8 +6,8 @@ const TaskForm = () => {
   const [task, setTask] = useState('');
   const [description, setDescription] = useState('');
   const [dueDate, setDueDate] = useState('');
-  const { addTask } = useTasks();
   const [client, setClient] = useState('');
+  const { addTask } = useTasks();
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -25,13 +25,13 @@ const TaskForm = () => {
       <input
         type="text"
         className="task-input"
-        placeholder="Title"
+        placeholder="Título"
         value={task}
         onChange={(e) => setTask(e.target.value)}
       />
       <textarea
         className="task-input"
-        placeholder="Description"
+        placeholder="Descrição"
         value={description}
         onChange={(e) => setDescription(e.target.value)}
       />
@@ -44,11 +44,11 @@ const TaskForm = () => {
       <input
         type="text"
         className="task-input"
-        placeholder="Client"
+        placeholder="Cliente"
         value={client}
         onChange={(e) => setClient(e.target.value)}
       />
-      <button type="submit" className="add-button">Add</button>
+      <button type="submit" className="add-button">Adicionar</button>
     </form>
   );
 };

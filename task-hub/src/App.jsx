@@ -36,7 +36,7 @@ function App() {
   }
 
   return (
-    <TaskProvider>
+    <TaskProvider user={user}>
       <div>
         <Header />
         <TaskForm />

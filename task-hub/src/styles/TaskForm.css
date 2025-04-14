@@ -2,10 +2,11 @@
 .task-form {
   display: flex;
   margin: 1rem auto;
-  flex-direction: row;
+  flex-direction: column;
   flex-wrap: wrap;
   align-content: center;
   gap: 30px;
+  
   
 }
 
