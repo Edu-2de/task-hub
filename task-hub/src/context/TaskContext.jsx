@@ -19,12 +19,13 @@ export const TaskProvider = ({ children }) => {
 
 
 
-  const addTask = (title, description, dueDate) => {
+  const addTask = (title, description, dueDate, client) => {
     const newTask = {
       id: crypto.randomUUID(),
       title,
       description,
       dueDate,
+      client,
       completed: false,
     };
     setTasks((prev) => [...prev, newTask]);

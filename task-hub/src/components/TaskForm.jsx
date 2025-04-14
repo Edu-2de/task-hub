@@ -7,15 +7,17 @@ const TaskForm = () => {
   const [description, setDescription] = useState('');
   const [dueDate, setDueDate] = useState('');
   const { addTask } = useTasks();
+  const [client, setClient] = useState('');
 
   const handleSubmit = (e) => {
     e.preventDefault();
     if (task.trim() === '') return;
 
-    addTask(task.trim(), description.trim(), dueDate);
+    addTask(task.trim(), description.trim(), dueDate, client.trim());
     setTask('');
     setDescription('');
     setDueDate('');
+    setClient('');
   };
 
   return (
@@ -38,6 +40,13 @@ const TaskForm = () => {
         className="task-input"
         value={dueDate}
         onChange={(e) => setDueDate(e.target.value)}
+      />
+      <input
+        type="text"
+        className="task-input"
+        placeholder="Client"
+        value={client}
+        onChange={(e) => setClient(e.target.value)}
       />
       <button type="submit" className="add-button">Add</button>
     </form>

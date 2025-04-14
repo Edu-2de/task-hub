@@ -1,6 +1,6 @@
 /* src/styles/TaskList.css */
 .task-list {
-  max-width: 500px;
+  max-width: 60%;
   margin: 1rem auto;
   display: flex;
   flex-direction: column;

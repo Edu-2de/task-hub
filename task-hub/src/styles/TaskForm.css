@@ -2,8 +2,7 @@
 .task-form {
   display: flex;
   margin: 1rem auto;
-  max-width: 500px;
-  flex-direction: column;
+  flex-direction: row;
   flex-wrap: wrap;
   align-content: center;
   gap: 30px;
