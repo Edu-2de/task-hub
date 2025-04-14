@@ -4,7 +4,9 @@ import '../styles/TaskItem.css';
 const TaskItem = ({ task, onToggleComplete, onDelete }) => {
   return (
     <div className={`task-item ${task.completed ? 'completed' : ''}`}>
-      <span onClick={() => onToggleComplete(task.id)}>{task.text}</span>
+      <h3 onClick={() => onToggleComplete(task.id)}>{task.title}</h3>
+      <p>{task.description}</p>
+      <p className="due-date">Due: {task.dueDate}</p>
       <button onClick={() => onDelete(task.id)} className="delete-button">
         ✕
       </button>

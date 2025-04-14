@@ -4,13 +4,18 @@ import { useTasks } from '../context/TaskContext';
 
 const TaskForm = () => {
   const [task, setTask] = useState('');
+  const [description, setDescription] = useState('');
+  const [dueDate, setDueDate] = useState('');
   const { addTask } = useTasks();
 
   const handleSubmit = (e) => {
     e.preventDefault();
     if (task.trim() === '') return;
-    addTask(task.trim());
+
+    addTask(task.trim(), description.trim(), dueDate);
     setTask('');
+    setDescription('');
+    setDueDate('');
   };
 
   return (
@@ -18,9 +23,21 @@ const TaskForm = () => {
       <input
         type="text"
         className="task-input"
-        placeholder="Add a new task..."
+        placeholder="Title"
         value={task}
         onChange={(e) => setTask(e.target.value)}
+      />
+      <textarea
+        className="task-input"
+        placeholder="Description"
+        value={description}
+        onChange={(e) => setDescription(e.target.value)}
+      />
+      <input
+        type="date"
+        className="task-input"
+        value={dueDate}
+        onChange={(e) => setDueDate(e.target.value)}
       />
       <button type="submit" className="add-button">Add</button>
     </form>

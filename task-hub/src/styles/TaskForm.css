@@ -1,9 +1,13 @@
 /* src/styles/TaskForm.css */
 .task-form {
   display: flex;
-  justify-content: center;
   margin: 1rem auto;
   max-width: 500px;
+  flex-direction: column;
+  flex-wrap: wrap;
+  align-content: center;
+  gap: 30px;
+  
 }
 
 .task-input {
