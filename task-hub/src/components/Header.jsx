@@ -1,13 +1,11 @@
-// src/components/Header.jsx
 import '../styles/Header.css';
 
-
-const Header = () => {
+function Header() {
   return (
     <header className="header">
       <h1>Task Hub</h1>
     </header>
   );
-};
+}
 
 export default Header;

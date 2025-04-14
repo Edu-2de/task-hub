@@ -8,9 +8,31 @@ import { useState } from 'react';
 
 function App() {
   const [user, setUser] = useState(null);
+  const [isRegistering, setIsRegistering] = useState(false);
 
   if (!user) {
-    return <LoginForm onLogin={setUser} />;
+    return (
+      <div>
+        <Header />
+        <div style={{ textAlign: 'center', marginTop: '50px' }}>
+          <h1>Bem-vindo ao Task Hub</h1>
+          <p>Gerencie suas tarefas de forma simples e eficiente.</p>
+          <button
+            onClick={() => setIsRegistering(false)}
+            style={{ marginRight: '10px', padding: '10px 20px' }}
+          >
+            Login
+          </button>
+          <button
+            onClick={() => setIsRegistering(true)}
+            style={{ padding: '10px 20px' }}
+          >
+            Registrar
+          </button>
+        </div>
+        <LoginForm onLogin={setUser} isRegistering={isRegistering} />
+      </div>
+    );
   }
 
   return (
