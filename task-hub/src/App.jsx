@@ -46,6 +46,7 @@ function App() {
   return (
     <TaskProvider user={user}>
       <div className="app">
+        <Header />
         <Sidebar
           setPage={setPage}
           page={page}
@@ -58,6 +59,7 @@ function App() {
             marginLeft: isSidebarOpen ? '250px' : '0',
             padding: '20px',
             transition: 'margin-left 0.3s ease',
+            marginTop: '60px', // Ajuste para o cabeçalho
           }}
         >
           {page === 'tasks' && (
